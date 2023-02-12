@@ -1,5 +1,6 @@
 package org.zonghan.y2023
 
+// https://leetcode.cn/problems/house-robber/description/
 object Rob extends App {
 
   /*
