@@ -17,13 +17,24 @@ object Rob extends App {
     输出：12
     解释：偷窃 1 号房屋 (金额 = 2), 偷窃 3 号房屋 (金额 = 9)，接着偷窃 5 号房屋 (金额 = 1)。
          偷窃到的最高金额 = 2 + 9 + 1 = 12 。
+         *
+         * [2,7,9,6,1]
   * */
   def rob(nums: Array[Int]): Int = {
-    0
+    val dp = new Array[Int](nums.length);
+    if (nums.length == 1) return nums(0);
+    if (nums.length == 2) return math.max(nums(0), nums(1))
+    dp(0) = nums(0)
+    dp(1) = math.max(nums(0), nums(1))
+    (2 until  nums.length).foreach(idx => {
+      dp(idx) = math.max(dp(idx - 2) + nums(idx), dp(idx - 1))
+    })
+    println(dp.mkString(","))
+    dp(nums.length - 1)
   }
 
-  println("[1,2,3,1]:")
-  println(rob(Array(1,2,3,1)))
+//  println("[1,2,3,1]:")
+//  println(rob(Array(1,2,3,1)))
 
   println("[2,7,9,3,1]:")
   println(rob(Array(2,7,9,3,1)))
